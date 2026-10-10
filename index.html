@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Haven | Premium Cotton Candy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="candy-bg" id="candyBg"></div>
+
+    <!-- ================= PUBLIC SITE ================= -->
+    <div id="publicSite">
+        <nav class="navbar">
+            <div class="nav-logo">Sweet Haven 🍭</div>
+            <div class="nav-links">
+                <a href="#products">Menu</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#" onclick="openOrderModal('Custom Order', 0, [])" class="nav-order-btn">Order Now</a>
+            </div>
+        </nav>
+
+        <header class="hero">
+            <div class="hero-content">
+                <img src="logo3.png" alt="Sweet Haven Logo" class="main-logo">
+                <h1 class="hero-title">Sweet Moments, <br>Made Fresh.</h1>
+                <p class="hero-subtitle">Bungoma's Premium Cotton Candy Experience</p>
+                <div class="hero-price-badge">Mini Cup — KSh 100 | Maxi Cup — KSh 159</div>
+                <div class="hero-buttons">
+                    <button onclick="openOrderModal('Custom Order', 0, [])" class="btn btn-primary">🛒 Order Now</button>
+                    <a href="#location" class="btn btn-outline">📍 Find Us</a>
+                </div>
+            </div>
+        </header>
+
+        <section id="products" class="section">
+            <h2 class="section-title">Our Signature Treats</h2>
+            <p class="section-subtitle">Handcrafted with love and premium ingredients.</p>
+            <div id="productGrid" class="product-grid"></div>
+        </section>
+
+        <section class="section">
+            <div class="combo-banner">
+                <h2>Countrywide Delivery 🚚</h2>
+                <p>We deliver anywhere in Kenya 🇰🇪<br><small>Delivery charges depend on your location.</small></p>
+                <button onclick="openOrderModal('Delivery Inquiry', 0, [])" class="btn btn-dark">Inquire About Delivery</button>
+            </div>
+        </section>
+
+        <section id="why-us" class="section">
+            <h2 class="section-title">Why You'll Love Us</h2>
+            <div class="features-grid">
+                <div class="feature-card"><div class="feature-icon">🍭</div><div class="feature-title">Fresh & Delicious</div><div class="feature-desc">Made daily for sweet moments.</div></div>
+                <div class="feature-card"><div class="feature-icon">🇰🇪</div><div class="feature-title">Countrywide Delivery</div><div class="feature-desc">Wherever you are in Kenya.</div></div>
+                <div class="feature-card"><div class="feature-icon">📍</div><div class="feature-title">Bungoma Based</div><div class="feature-desc">Find us in Bungoma Town.</div></div>
+                <div class="feature-card"><div class="feature-icon">💬</div><div class="feature-title">Easy Ordering</div><div class="feature-desc">Direct WhatsApp integration.</div></div>
+            </div>
+        </section>
+
+        <section id="location" class="section">
+            <div class="location-box">
+                <h3>Visit Sweet Haven</h3>
+                <p>📍 Bungoma Town, Kenya</p>
+                <p>🕗 Opening Hours: 8:00 AM – 5:00 PM</p>
+                <a href="https://maps.google.com/?q=Bungoma+Town,+Kenya" target="_blank" class="btn btn-primary">📍 Get Directions</a>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/sweethavenbg" target="_blank" class="social-btn">📸 Instagram</a>
+                    <a href="https://www.tiktok.com/@sweet.havenke" target="_blank" class="social-btn">🎵 TikTok</a>
+                </div>
+            </div>
+        </section>
+
+        <div style="text-align: center; padding: 20px;">
+            <a href="#" onclick="showOwnerLogin()" style="color: #d8a0b8; font-size: 0.8rem; text-decoration: none;">Owner Login</a>
+        </div>
+
+        <footer><p>Website concept by <strong>JENGA WEB</strong> | We build, you grow.</p></footer>
+    </div>
+
+    <!-- ================= OWNER SITE ================= -->
+    <div id="ownerSite" style="display: none;">
+        <nav class="navbar owner-nav">
+            <div class="nav-logo" style="color: #fff;">Sweet Haven Admin 🛡️</div>
+            <div class="nav-links"><a href="#" onclick="logoutOwner()" class="nav-order-btn" style="background: #e53935;">Logout</a></div>
+        </nav>
+
+        <div id="ownerLoginBox" class="owner-container">
+            <div class="login-card">
+                <h2 style="color: var(--dark-blue); text-align: center; margin-bottom: 20px;">Owner Dashboard Login</h2>
+                <div class="form-group"><label>Password</label><input type="password" id="ownerPassword" placeholder="Enter password" class="form-input"></div>
+                <button onclick="loginOwner()" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Login</button>
+                <p style="font-size: 0.7rem; color: #888; text-align: center; margin-top: 15px;">Demo Password: admin123</p>
+            </div>
+        </div>
+
+        <div id="ownerDashboardBox" class="owner-container" style="display: none;">
+            <div class="dashboard-header">
+                <h2>Dashboard</h2>
+                <button onclick="exportCSV()" class="btn btn-dark" style="padding: 10px 20px; font-size: 0.9rem;">📥 Export Orders CSV</button>
+            </div>
+
+            <div class="dashboard-tabs">
+                <button onclick="showTab('ordersTab')" id="btnOrders" class="tab-btn active">Orders</button>
+                <button onclick="showTab('productsTab')" id="btnProducts" class="tab-btn">Manage Products</button>
+            </div>
+
+            <div id="ordersTab" class="tab-content">
+                <div class="stats-grid">
+                    <div class="stat-card"><h4>Total Revenue</h4><p id="statRevenue">KSh 0</p></div>
+                    <div class="stat-card"><h4>Total Orders</h4><p id="statOrders">0</p></div>
+                    <div class="stat-card"><h4>Pending Orders</h4><p id="statPending">0</p></div>
+                </div>
+                <div class="bulk-actions">
+                    <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--dark-blue);">
+                        <input type="checkbox" id="selectAllOrders" onchange="toggleSelectAll(this)"> Select All
+                    </label>
+                    <button onclick="bulkSendPending()" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.85rem;">💬 Send "Pending" to Selected</button>
+                </div>
+                <div class="table-wrapper">
+                    <table class="orders-table">
+                        <thead><tr><th></th><th>Date</th><th>ID</th><th>Phone</th><th>Item</th><th>Flavor</th><th>Qty</th><th>Type</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
+                        <tbody id="ordersTableBody"><tr><td colspan="11" style="text-align: center; color: #888;">No orders yet.</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="productsTab" class="tab-content" style="display: none;">
+                <div class="product-manager-layout">
+                    <div class="manager-form">
+                        <h3 id="formTitle">Add New Product</h3>
+                        <input type="hidden" id="editProductId">
+                        <div class="form-group"><label>Product Name</label><input type="text" id="prodName" class="form-input" placeholder="e.g., Oreo Explosion"></div>
+                        <div class="form-group"><label>Price (KSh)</label><input type="number" id="prodPrice" class="form-input" placeholder="e.g., 150"></div>
+                        <div class="form-group"><label>Description</label><input type="text" id="prodDesc" class="form-input" placeholder="Short description"></div>
+                        <div class="form-group"><label>Offer (Optional)</label><input type="text" id="prodOffer" class="form-input" placeholder="e.g., 20% OFF"></div>
+
+                        <!-- FLAVOR MANAGER -->
+                        <div class="form-group">
+                            <label>🍬 Flavors (Add as many as you want)</label>
+                            <div class="flavor-input-row">
+                                <input type="text" id="flavorInput" class="form-input" placeholder="e.g., Strawberry">
+                                <button type="button" onclick="addFlavorTag()" class="btn-add-flavor">+ Add</button>
+                            </div>
+                            <div id="flavorManagerList" class="flavor-manager-list"></div>
+                            <small class="flavor-hint">Customers will pick one flavor when ordering</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Attach Photo (Max 1)</label>
+                            <input type="file" id="prodImage" accept="image/*" class="form-input" onchange="previewImage(event)">
+                            <img id="imagePreview" src="#" alt="Preview" style="display:none; width: 100%; max-height: 150px; object-fit: cover; border-radius: 10px; margin-top: 10px;">
+                        </div>
+                        <button onclick="saveProduct()" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Save Product</button>
+                        <button onclick="clearForm()" class="btn btn-outline" style="width: 100%; margin-top: 5px; border-color: #ccc; color: #666;">Cancel / Clear</button>
+                    </div>
+                    <div class="manager-list">
+                        <h3>Current Products</h3>
+                        <div id="dashboardProductList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ORDER MODAL -->
+    <div id="orderModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeOrderModal()">&times;</span>
+            <h2 style="color: var(--deep-pink); margin-bottom: 5px;">Complete Your Order</h2>
+            <p style="color: #666; margin-bottom: 20px; font-size: 0.9rem;">Fill in the details to generate your receipt.</p>
+            <div class="form-group"><label>Product:</label><input type="text" id="modalProductName" class="form-input" readonly></div>
+
+            <div class="form-group" id="flavorGroup" style="display: none;">
+                <label>🍬 Choose Your Flavor:</label>
+                <div id="flavorOptions" class="flavor-options"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Quantity:</label>
+                <div class="qty-control"><button onclick="changeQty(-1)">-</button><input type="number" id="modalQuantity" value="1" min="1" readonly><button onclick="changeQty(1)">+</button></div>
+            </div>
+            <div class="form-group"><label>Your Phone Number:</label><input type="tel" id="modalPhone" placeholder="e.g., 0712 345 678" class="form-input" required></div>
+            <div class="form-group">
+                <label>Order Type:</label>
+                <div class="radio-group">
+                    <label class="radio-label"><input type="radio" name="orderType" value="Pickup" checked onchange="toggleDestination()"> Pickup</label>
+                    <label class="radio-label"><input type="radio" name="orderType" value="Delivery" onchange="toggleDestination()"> Delivery</label>
+                </div>
+            </div>
+            <div class="form-group" id="destinationGroup" style="display: none;"><label>Delivery Destination:</label><input type="text" id="modalDestination" placeholder="e.g., Bungoma Town..." class="form-input"></div>
+            <div class="total-box"><span>Total:</span><span id="modalTotalPrice">KSh 0</span></div>
+            <button onclick="submitOrder()" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Place My Order 🍭</button>
+        </div>
+    </div>
+
+    <!-- THANK YOU MODAL -->
+    <div id="thankYouModal" class="modal-overlay">
+        <div class="thank-you-card">
+            <div class="candy-rain" id="candyRain"></div>
+            <div class="thank-you-icon">🎉</div>
+            <h2 class="thank-you-title">Thank You!</h2>
+            <p class="thank-you-msg">Your order has been <strong>received</strong> 💕</p>
+            <p class="thank-you-sub">Please wait for feedback from the owner.<br>They will confirm your order shortly!</p>
+            <div class="thank-you-summary" id="thankYouSummary"></div>
+            <button onclick="sendWhatsAppFromThankYou()" class="btn btn-whatsapp" style="width: 100%; margin-top: 20px;">🟢 Send Order to WhatsApp</button>
+            <button onclick="closeThankYou()" class="btn btn-outline" style="width: 100%; margin-top: 10px; border-color: #ddd; color: #888;">Close</button>
+        </div>
+    </div>
+
+    <!-- PAYMENT CELEBRATION OVERLAY -->
+    <div id="paymentCelebration" class="payment-celebration">
+        <div class="confetti-container" id="confettiContainer"></div>
+        <div class="celebration-center">
+            <div class="celebration-ring"></div>
+            <div class="celebration-check">✓</div>
+            <h2 class="celebration-title">Order Sent!</h2>
+            <p class="celebration-subtitle">Your sweet treat is on its way 🍭</p>
+            <div class="celebration-progress"><div class="celebration-progress-fill"></div></div>
+            <p class="celebration-note">Opening WhatsApp...</p>
+        </div>
+    </div>
+
+    <div id="bulkPanel" class="bulk-panel" style="display:none;">
+        <div class="bulk-panel-header"><h3>📤 Sending Messages</h3><span class="close-btn" onclick="closeBulkPanel()">&times;</span></div>
+        <div class="bulk-panel-body">
+            <div class="progress-track"><div id="bulkProgressBar" class="progress-fill"></div></div>
+            <p id="bulkProgressText" class="bulk-progress-text">Ready</p>
+            <div id="bulkCurrentOrder" class="bulk-current-order"></div>
+            <button id="bulkNextBtn" onclick="sendNextInQueue()" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Send to First Customer →</button>
+            <button onclick="closeBulkPanel()" class="btn btn-outline" style="width: 100%; margin-top: 10px; border-color: #ddd; color: #888;">Cancel</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
