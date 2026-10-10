@@ -1,0 +1,8 @@
+# Temp files
+*.tmp
+*.log
+.DS_Store
+fb_raw.txt
+/TD-Closet-Report-*.csv
+/TD-Closet-Receipt-*.pdf
+/TD-Closet-Backup-*.json

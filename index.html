@@ -1,238 +1,659 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweet Haven | Premium Cotton Candy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E0E0E">
+<meta name="description" content="T&D Closet — premium thrifted fits in Bungoma. Jeans, polos, shirts, sweatpants. Order and pay online, nationwide delivery.">
+<meta property="og:title" content="T&D Closet — Premium Thrifted Fits">
+<meta property="og:description" content="Hand-picked thrifted jeans, polos, shirts and sweatpants. Pay online, delivered countrywide.">
+<meta property="og:type" content="website">
+<title>T&D Closet — Premium Thrifted Fits, Bungoma</title>
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%230E0E0E'/><text x='32' y='45' font-family='Impact,sans-serif' font-size='34' fill='%23C9962B' text-anchor='middle'>TD</text></svg>">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "T&D Closet",
+  "description": "Premium thrifted fits. Jeans, polos, shirts, sweatpants.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Horizon Plaza, 4th Floor, Shop 1011",
+    "addressLocality": "Bungoma",
+    "addressCountry": "KE"
+  },
+  "telephone": "+254740552916",
+  "openingHours": "Mo-Sa 08:00-20:00",
+  "sameAs": [
+    "https://www.tiktok.com/@daktaripdf",
+    "https://www.instagram.com/ddocgram"
+  ]
+}
+</script>
 </head>
 <body>
+<div id="splash"><div class="splash-logo">T<span class="amp">&amp;</span>D Closet</div><div class="splash-bar"></div></div>
 
-    <div class="candy-bg" id="candyBg"></div>
 
-    <!-- ================= PUBLIC SITE ================= -->
-    <div id="publicSite">
-        <nav class="navbar">
-            <div class="nav-logo">Sweet Haven 🍭</div>
-            <div class="nav-links">
-                <a href="#products">Menu</a>
-                <a href="#why-us">Why Us</a>
-                <a href="#" onclick="openOrderModal('Custom Order', 0, [])" class="nav-order-btn">Order Now</a>
-            </div>
-        </nav>
+<!-- ICON SPRITE -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2Zm5.7 14.1c-.2.6-1.2 1.2-1.7 1.3-.4 0-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.7-4.4-3.9-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.6-.3h.5c.1 0 .3 0 .5.4.2.4.6 1.4.7 1.5 0 .1.1.2 0 .3-.1.2-.1.2-.3.4-.1.2-.3.4-.4.5-.1.1-.3.3-.1.5.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.3-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3 0 .2 0 .8-.2 1.4Z"/></symbol>
+<symbol id="i-tiktok" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 2h-3v13.5a3.5 3.5 0 1 1-3.5-3.5c.3 0 .7 0 1 .1V9a6.5 6.5 0 1 0 5.5 6.4V8.6a7 7 0 0 0 4 1.3V7a4.1 4.1 0 0 1-4-4Z"/></symbol>
+<symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 12 22 2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8Z"/><circle cx="7" cy="7" r="1.5"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4Z"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></symbol>
+<symbol id="i-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></symbol>
+<symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+<symbol id="i-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m16.5 9.4-9-5.2M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></symbol>
+<symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></symbol>
+<symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></symbol>
+</svg>
 
-        <header class="hero">
-            <div class="hero-content">
-                <img src="logo3.png" alt="Sweet Haven Logo" class="main-logo">
-                <h1 class="hero-title">Sweet Moments, <br>Made Fresh.</h1>
-                <p class="hero-subtitle">Bungoma's Premium Cotton Candy Experience</p>
-                <div class="hero-price-badge">Mini Cup — KSh 100 | Maxi Cup — KSh 159</div>
-                <div class="hero-buttons">
-                    <button onclick="openOrderModal('Custom Order', 0, [])" class="btn btn-primary">🛒 Order Now</button>
-                    <a href="#location" class="btn btn-outline">📍 Find Us</a>
-                </div>
-            </div>
-        </header>
+<!-- COOKIE / STORAGE NOTICE -->
+<div id="cookieNotice" class="cookie-notice" hidden>
+<div class="container cookie-inner">
+<p>We use local storage to remember your cart, wishlist and orders on this device. See our <a href="#privacy" data-policy="privacy">Privacy Policy</a>.</p>
+<button id="cookieAccept" class="btn btn-dark btn-sm">Accept</button>
+</div>
+</div>
 
-        <section id="products" class="section">
-            <h2 class="section-title">Our Signature Treats</h2>
-            <p class="section-subtitle">Handcrafted with love and premium ingredients.</p>
-            <div id="productGrid" class="product-grid"></div>
-        </section>
+<!-- ANNOUNCEMENT -->
+<div class="announce" role="region" aria-label="Announcement" id="announceBar">
+<div class="announce-track" id="announceTrack">
+<span>Nationwide delivery</span><span class="dot"></span>
+<span>Pickup at Horizon Plaza, Bungoma</span><span class="dot"></span>
+<span>Pay with M-Pesa</span><span class="dot"></span>
+</div>
+</div>
 
-        <section class="section">
-            <div class="combo-banner">
-                <h2>Countrywide Delivery 🚚</h2>
-                <p>We deliver anywhere in Kenya 🇰🇪<br><small>Delivery charges depend on your location.</small></p>
-                <button onclick="openOrderModal('Delivery Inquiry', 0, [])" class="btn btn-dark">Inquire About Delivery</button>
-            </div>
-        </section>
+<!-- NAVBAR -->
+<header id="navbar" class="nav">
+<div class="nav-inner container">
+<a href="#top" class="brand" aria-label="T&D Closet home">
+<img id="logoImg" src="logo.png" alt="T&D Closet" class="brand-logo" onerror="this.style.display='none';document.getElementById('logoText').style.display='inline-flex';">
+<span id="logoText" class="brand-text" style="display:none">T<span class="amp">&amp;</span>D Closet</span>
+</a>
+<nav class="nav-links" aria-label="Primary">
+<a href="#top">Home</a>
+<a href="#shop">Shop</a>
+<a href="#about">About</a>
+<a href="#delivery">Delivery</a>
+<a href="#payment">Payment</a>
+<a href="#visit">Visit</a>
+<a href="#" id="navTrackLink">Track Order</a>
+</nav>
+<div class="nav-actions">
+<button id="navSearchBtn" class="icon-btn" aria-label="Search"><svg width="20" height="20"><use href="#i-search"/></svg></button>
+<button id="navWishlistBtn" class="icon-btn" aria-label="Wishlist"><svg width="20" height="20"><use href="#i-heart"/></svg><span id="navWishlistCount" class="badge-count" hidden>0</span></button>
+<button id="navBagBtn" class="icon-btn" aria-label="My orders"><svg width="20" height="20"><use href="#i-cart"/></svg><span id="navBagCount" class="badge-count" hidden>0</span></button>
+<button id="navMenuBtn" class="icon-btn menu-btn" aria-label="Menu" aria-expanded="false"><svg width="22" height="22"><use href="#i-menu"/></svg></button>
+</div>
+</div>
+<div id="navSearchBar" class="nav-search-bar" hidden>
+<div class="container">
+<input id="navSearchInput" type="search" placeholder="Search jeans, polos, shirts..." autocomplete="off">
+<button id="navSearchClose" class="icon-btn" aria-label="Close search"><svg width="20" height="20"><use href="#i-x"/></svg></button>
+</div>
+</div>
+</header>
 
-        <section id="why-us" class="section">
-            <h2 class="section-title">Why You'll Love Us</h2>
-            <div class="features-grid">
-                <div class="feature-card"><div class="feature-icon">🍭</div><div class="feature-title">Fresh & Delicious</div><div class="feature-desc">Made daily for sweet moments.</div></div>
-                <div class="feature-card"><div class="feature-icon">🇰🇪</div><div class="feature-title">Countrywide Delivery</div><div class="feature-desc">Wherever you are in Kenya.</div></div>
-                <div class="feature-card"><div class="feature-icon">📍</div><div class="feature-title">Bungoma Based</div><div class="feature-desc">Find us in Bungoma Town.</div></div>
-                <div class="feature-card"><div class="feature-icon">💬</div><div class="feature-title">Easy Ordering</div><div class="feature-desc">Direct WhatsApp integration.</div></div>
-            </div>
-        </section>
+<!-- MOBILE MENU -->
+<div id="mobileMenuOverlay" class="overlay" hidden></div>
+<aside id="mobileMenu" class="mobile-menu" aria-hidden="true">
+<div class="mobile-menu-head">
+<span class="brand-text">T<span class="amp">&amp;</span>D Closet</span>
+<button id="mobileMenuClose" class="icon-btn" aria-label="Close menu"><svg width="22" height="22"><use href="#i-x"/></svg></button>
+</div>
+<nav class="mobile-menu-links" aria-label="Mobile">
+<a href="#top">Home</a>
+<a href="#shop">Shop</a>
+<a href="#about">About</a>
+<a href="#delivery">Delivery</a>
+<a href="#payment">Payment</a>
+<a href="#visit">Visit</a>
+<a href="#" id="mobileTrackLink">Track Order</a>
+<a href="#social">Social</a>
+<a href="#owner" id="mobileOwnerLink">Owner Login</a>
+</nav>
+<div class="mobile-menu-foot">
+<a href="https://wa.me/254740552916" class="btn btn-dark btn-block" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#i-wa"/></svg> Order on WhatsApp</a>
+<div class="mobile-menu-socials">
+<a href="https://www.tiktok.com/@daktaripdf" target="_blank" rel="noopener" aria-label="TikTok"><svg width="22" height="22"><use href="#i-tiktok"/></svg></a>
+<a href="https://www.instagram.com/ddocgram" target="_blank" rel="noopener" aria-label="Instagram"><svg width="22" height="22"><use href="#i-ig"/></svg></a>
+<a href="https://wa.me/254740552916" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="22" height="22"><use href="#i-wa"/></svg></a>
+</div>
+</div>
+</aside>
 
-        <section id="location" class="section">
-            <div class="location-box">
-                <h3>Visit Sweet Haven</h3>
-                <p>📍 Bungoma Town, Kenya</p>
-                <p>🕗 Opening Hours: 8:00 AM – 5:00 PM</p>
-                <a href="https://maps.google.com/?q=Bungoma+Town,+Kenya" target="_blank" class="btn btn-primary">📍 Get Directions</a>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/sweethavenbg" target="_blank" class="social-btn">📸 Instagram</a>
-                    <a href="https://www.tiktok.com/@sweet.havenke" target="_blank" class="social-btn">🎵 TikTok</a>
-                </div>
-            </div>
-        </section>
+<!-- OFFLINE BANNER -->
+<div id="offlineBanner" class="offline-banner" hidden><svg width="16" height="16"><use href="#i-alert"/></svg> You are offline. Some features may not work.</div>
 
-        <div style="text-align: center; padding: 20px;">
-            <a href="#" onclick="showOwnerLogin()" style="color: #d8a0b8; font-size: 0.8rem; text-decoration: none;">Owner Login</a>
-        </div>
+<main id="top">
 
-        <footer><p>Website concept by <strong>JENGA WEB</strong> | We build, you grow.</p></footer>
-    </div>
+<!-- HERO -->
+<section class="hero">
+<div class="container hero-grid">
+<div class="hero-text">
+<span class="eyebrow">Premium thrifted fits — Bungoma</span>
+<h1 class="hero-title">
+<span>Wear it.</span>
+<span class="accent">Own it.</span>
+<span class="outline">One of a kind.</span>
+</h1>
+<p class="hero-tag">Hand-picked thrifted jeans, polos, shirts and sweatpants. Quality checked. Priced fair. Order online or reserve on WhatsApp.</p>
+<div class="hero-cta">
+<a href="#shop" class="btn btn-dark">Shop collection <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+<a href="#visit" class="btn btn-outline">Visit us</a>
+</div>
+<ul class="trust-row">
+<li><svg width="18" height="18"><use href="#i-truck"/></svg> Nationwide delivery</li>
+<li><svg width="18" height="18"><use href="#i-shield"/></svg> Pay with M-Pesa</li>
+<li><svg width="18" height="18"><use href="#i-check"/></svg> Quality checked</li>
+</ul>
+</div>
+<div class="hero-visual">
+<div class="hero-collage" id="heroCollage">
+<div class="tile tile-1" data-slot="1"></div>
+<div class="tile tile-2" data-slot="2"></div>
+<div class="tile tile-3" data-slot="3"></div>
+</div>
+<div class="hero-chip"><span class="pulse"></span> New drops every week</div>
+</div>
+</div>
+</section>
 
-    <!-- ================= OWNER SITE ================= -->
-    <div id="ownerSite" style="display: none;">
-        <nav class="navbar owner-nav">
-            <div class="nav-logo" style="color: #fff;">Sweet Haven Admin 🛡️</div>
-            <div class="nav-links"><a href="#" onclick="logoutOwner()" class="nav-order-btn" style="background: #e53935;">Logout</a></div>
-        </nav>
+<!-- CATEGORIES -->
+<section class="cat-strip" aria-label="Shop by category">
+<div class="container">
+<div class="chips" id="categoryChips">
+<button class="chip active" data-cat="all">All</button>
+<button class="chip" data-cat="Jeans">Jeans</button>
+<button class="chip" data-cat="Polos">Polos</button>
+<button class="chip" data-cat="Shirts">Shirts</button>
+<button class="chip" data-cat="Sweatpants">Sweatpants</button>
+<button class="chip" data-cat="Jackets">Jackets</button>
+</div>
+</div>
+</section>
 
-        <div id="ownerLoginBox" class="owner-container">
-            <div class="login-card">
-                <h2 style="color: var(--dark-blue); text-align: center; margin-bottom: 20px;">Owner Dashboard Login</h2>
-                <div class="form-group"><label>Password</label><input type="password" id="ownerPassword" placeholder="Enter password" class="form-input"></div>
-                <button onclick="loginOwner()" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Login</button>
-                <p style="font-size: 0.7rem; color: #888; text-align: center; margin-top: 15px;">Demo Password: admin123</p>
-            </div>
-        </div>
+<!-- SHOP -->
+<section id="shop" class="section shop">
+<div class="container">
+<div class="section-head">
+<span class="kicker">The collection</span>
+<h2 class="section-title">The Collection</h2>
+<p class="section-sub">Every piece hand-picked. Every piece one of a kind. Pay online in seconds.</p>
+</div>
+<div class="shop-toolbar">
+<div class="shop-search"><svg width="18" height="18"><use href="#i-search"/></svg><input id="searchInput" type="search" placeholder="Search the collection..." autocomplete="off"></div>
+<select id="sortSelect" class="select" aria-label="Sort">
+<option value="newest">Newest</option>
+<option value="price-asc">Price: low to high</option>
+<option value="price-desc">Price: high to low</option>
+</select>
+<label class="switch"><input id="hideSoldToggle" type="checkbox"><span class="switch-track"><span class="switch-thumb"></span></span><span class="switch-label">Hide sold</span></label>
+</div>
+<p class="result-count" id="productCount">Loading...</p>
+<div id="productGrid" class="product-grid" aria-live="polite"></div>
+<div id="skeletons" class="product-grid skeleton-grid" aria-hidden="true"></div>
+<div id="emptyState" class="empty-state" hidden>
+<svg width="42" height="42"><use href="#i-package"/></svg>
+<h3>No items match your search</h3>
+<p>Try a different category or clear your filters.</p>
+<button id="clearFiltersBtn" class="btn btn-outline">Clear filters</button>
+</div>
+<div id="shopError" class="empty-state" hidden>
+<svg width="42" height="42"><use href="#i-alert"/></svg>
+<h3>Could not load the collection</h3>
+<p>Check your connection and try again.</p>
+<button id="shopRetryBtn" class="btn btn-outline">Try again</button>
+</div>
+<div class="load-more-wrap"><button id="loadMoreBtn" class="btn btn-outline" hidden>Load more</button></div>
+</div>
+</section>
 
-        <div id="ownerDashboardBox" class="owner-container" style="display: none;">
-            <div class="dashboard-header">
-                <h2>Dashboard</h2>
-                <button onclick="exportCSV()" class="btn btn-dark" style="padding: 10px 20px; font-size: 0.9rem;">📥 Export Orders CSV</button>
-            </div>
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+<div class="marquee-track">
+<span>Thrifted</span><span class="diamond"></span><span>Premium</span><span class="diamond"></span>
+<span>One of a kind</span><span class="diamond"></span><span>Bungoma</span><span class="diamond"></span>
+<span>Nationwide delivery</span><span class="diamond"></span>
+<span>Thrifted</span><span class="diamond"></span><span>Premium</span><span class="diamond"></span>
+<span>One of a kind</span><span class="diamond"></span><span>Bungoma</span><span class="diamond"></span>
+<span>Nationwide delivery</span><span class="diamond"></span>
+</div>
+</div>
 
-            <div class="dashboard-tabs">
-                <button onclick="showTab('ordersTab')" id="btnOrders" class="tab-btn active">Orders</button>
-                <button onclick="showTab('productsTab')" id="btnProducts" class="tab-btn">Manage Products</button>
-            </div>
+<!-- ABOUT -->
+<section id="about" class="section about">
+<div class="container about-grid">
+<div>
+<span class="kicker">Why T&amp;D Closet</span>
+<h2 class="section-title">Built for people who<br>dress with intent.</h2>
+<p class="section-sub">We sort through piles so you don't have to. Every item is inspected, cleaned where needed and priced honestly. No filler, no fast fashion, no nonsense.</p>
+<ul class="feature-list">
+<li><svg width="20" height="20"><use href="#i-check"/></svg><div><strong>Hand-picked quality</strong><span>Every item inspected before it hits the rack.</span></div></li>
+<li><svg width="20" height="20"><use href="#i-check"/></svg><div><strong>Honest sizing and condition</strong><span>Sizes and condition shown on every listing.</span></div></li>
+<li><svg width="20" height="20"><use href="#i-check"/></svg><div><strong>Fair prices</strong><span>Premium without the premium markup.</span></div></li>
+<li><svg width="20" height="20"><use href="#i-check"/></svg><div><strong>Fresh drops weekly</strong><span>New finds added every week.</span></div></li>
+<li><svg width="20" height="20"><use href="#i-check"/></svg><div><strong>Nationwide delivery</strong><span>Countrywide via courier or bus parcel.</span></div></li>
+<li><svg width="20" height="20"><use href="#i-check"/></svg><div><strong>Secure online payment</strong><span>Pay with M-Pesa through IntaSend, or on pickup.</span></div></li>
+</ul>
+</div>
+<div class="about-stats">
+<div class="stat-block"><div class="stat-num">100+</div><div class="stat-lbl">Items in rotation</div></div>
+<div class="stat-block"><div class="stat-num">Weekly</div><div class="stat-lbl">Fresh drops</div></div>
+<div class="stat-block"><div class="stat-num">Countrywide</div><div class="stat-lbl">Delivery</div></div>
+<div class="stat-block accent-block"><svg width="28" height="28"><use href="#i-tag"/></svg><div class="stat-lbl">Premium thrift, fairly priced</div></div>
+</div>
+</div>
+</section>
 
-            <div id="ordersTab" class="tab-content">
-                <div class="stats-grid">
-                    <div class="stat-card"><h4>Total Revenue</h4><p id="statRevenue">KSh 0</p></div>
-                    <div class="stat-card"><h4>Total Orders</h4><p id="statOrders">0</p></div>
-                    <div class="stat-card"><h4>Pending Orders</h4><p id="statPending">0</p></div>
-                </div>
-                <div class="bulk-actions">
-                    <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--dark-blue);">
-                        <input type="checkbox" id="selectAllOrders" onchange="toggleSelectAll(this)"> Select All
-                    </label>
-                    <button onclick="bulkSendPending()" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.85rem;">💬 Send "Pending" to Selected</button>
-                </div>
-                <div class="table-wrapper">
-                    <table class="orders-table">
-                        <thead><tr><th></th><th>Date</th><th>ID</th><th>Phone</th><th>Item</th><th>Flavor</th><th>Qty</th><th>Type</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
-                        <tbody id="ordersTableBody"><tr><td colspan="11" style="text-align: center; color: #888;">No orders yet.</td></tr></tbody>
-                    </table>
-                </div>
-            </div>
+<!-- DELIVERY -->
+<section id="delivery" class="section delivery">
+<div class="container">
+<div class="section-head">
+<span class="kicker">How to get it</span>
+<h2 class="section-title">Delivery &amp; pickup</h2>
+</div>
+<div class="delivery-grid">
+<article class="card-feature">
+<div class="card-icon"><svg width="26" height="26"><use href="#i-truck"/></svg></div>
+<h3>Nationwide delivery</h3>
+<p>We ship countrywide via courier or bus parcel. Choose your zone at checkout, the exact fee is shown before you pay.</p>
+<ul class="mini-list"><li>Delivery in 1 to 3 days</li><li>Fee confirmed at checkout</li><li>Pay online or on pickup</li></ul>
+</article>
+<article class="card-feature">
+<div class="card-icon"><svg width="26" height="26"><use href="#i-pin"/></svg></div>
+<h3>In-store pickup</h3>
+<p>Come to Horizon Plaza, 4th Floor, Shop 1011. Try before you buy. Take your time, no pressure.</p>
+<ul class="mini-list"><li>Open Mon to Sat, 8 AM to 8 PM</li><li>Opposite the bus station</li><li>No delivery fee</li></ul>
+</article>
+</div>
+<ol class="steps">
+<li><span class="step-num">01</span><div><strong>Pick your piece</strong><p>Tap Reserve and choose your size.</p></div></li>
+<li><span class="step-num">02</span><div><strong>Pay or hold</strong><p>Pay now with M-Pesa, or hold it for 24 hours.</p></div></li>
+<li><span class="step-num">03</span><div><strong>Receive it</strong><p>Download your receipt. Pickup or delivery.</p></div></li>
+</ol>
+</div>
+</section>
 
-            <div id="productsTab" class="tab-content" style="display: none;">
-                <div class="product-manager-layout">
-                    <div class="manager-form">
-                        <h3 id="formTitle">Add New Product</h3>
-                        <input type="hidden" id="editProductId">
-                        <div class="form-group"><label>Product Name</label><input type="text" id="prodName" class="form-input" placeholder="e.g., Oreo Explosion"></div>
-                        <div class="form-group"><label>Price (KSh)</label><input type="number" id="prodPrice" class="form-input" placeholder="e.g., 150"></div>
-                        <div class="form-group"><label>Description</label><input type="text" id="prodDesc" class="form-input" placeholder="Short description"></div>
-                        <div class="form-group"><label>Offer (Optional)</label><input type="text" id="prodOffer" class="form-input" placeholder="e.g., 20% OFF"></div>
+<!-- PAYMENT -->
+<section id="payment" class="section payment">
+<div class="container">
+<div class="payment-card">
+<div class="payment-head">
+<div><span class="kicker">Payment</span><h2 class="section-title">Pay securely with M-Pesa</h2></div>
+<div class="mpesa-badge">M-PESA</div>
+</div>
+<p class="pay-note">Online payments are processed securely by IntaSend on Safaricom M-Pesa. We never see your M-Pesa PIN.</p>
+<div class="payment-grid">
+<div class="pay-line"><span class="pay-label">Till number</span><span class="pay-value editable" id="payTill">[ADD TILL NUMBER]</span><button class="copy-btn" data-copy-target="payTill" aria-label="Copy till number"><svg width="16" height="16"><use href="#i-copy"/></svg></button></div>
+<div class="pay-line"><span class="pay-label">Paybill</span><span class="pay-value editable" id="payPaybill">[ADD PAYBILL]</span><button class="copy-btn" data-copy-target="payPaybill" aria-label="Copy paybill"><svg width="16" height="16"><use href="#i-copy"/></svg></button></div>
+<div class="pay-line"><span class="pay-label">Send money</span><span class="pay-value" id="paySend">0740 552 916</span><button class="copy-btn" data-copy-target="paySend" aria-label="Copy number"><svg width="16" height="16"><use href="#i-copy"/></svg></button></div>
+</div>
+<ol class="pay-steps">
+<li><strong>1.</strong> Pick your item and tap Reserve.</li>
+<li><strong>2.</strong> Choose Pay now, Book, or Pay on pickup.</li>
+<li><strong>3.</strong> M-Pesa prompt arrives on your phone for pay now.</li>
+<li><strong>4.</strong> Download your receipt. Track your order any time.</li>
+</ol>
+<p class="pay-note">Your order is confirmed once payment is verified by our team, usually within minutes. If you paid and the status still says "Payment received - being confirmed", rest easy, we are checking it.</p>
+<div class="visit-cta">
+<a href="#" id="paymentTrackLink" class="btn btn-outline"><svg width="18" height="18"><use href="#i-search"/></svg> Track an order</a>
+<a href="https://wa.me/254740552916?text=Hi%20T%26D%20Closet%2C%20I%20have%20a%20question%20about%20payment" target="_blank" rel="noopener" class="btn btn-dark"><svg width="18" height="18"><use href="#i-wa"/></svg> Message us</a>
+</div>
+</div>
+</div>
+</section>
 
-                        <!-- FLAVOR MANAGER -->
-                        <div class="form-group">
-                            <label>🍬 Flavors (Add as many as you want)</label>
-                            <div class="flavor-input-row">
-                                <input type="text" id="flavorInput" class="form-input" placeholder="e.g., Strawberry">
-                                <button type="button" onclick="addFlavorTag()" class="btn-add-flavor">+ Add</button>
-                            </div>
-                            <div id="flavorManagerList" class="flavor-manager-list"></div>
-                            <small class="flavor-hint">Customers will pick one flavor when ordering</small>
-                        </div>
+<!-- VISIT -->
+<section id="visit" class="section visit">
+<div class="container visit-grid">
+<div>
+<span class="kicker">Find us</span>
+<h2 class="section-title">Come through.</h2>
+<div class="visit-status" id="openStatus"><span class="dot-status"></span> Checking hours...</div>
+<ul class="visit-info">
+<li><svg width="20" height="20"><use href="#i-pin"/></svg><div><strong>Horizon Plaza</strong><span>4th Floor, Shop 1011 (opposite the bus station), Bungoma, Kenya</span></div></li>
+<li><svg width="20" height="20"><use href="#i-clock"/></svg><div><strong>Mon to Sat</strong><span>8:00 AM to 8:00 PM</span></div></li>
+<li><svg width="20" height="20"><use href="#i-clock"/></svg><div><strong>Sunday</strong><span>Closed (WhatsApp orders still welcome)</span></div></li>
+<li><svg width="20" height="20"><use href="#i-phone"/></svg><div><strong>Call or WhatsApp</strong><span>0740 552 916</span></div></li>
+</ul>
+<p class="visit-hint">Take the lift or stairs to the 4th floor. Shop 1011, look for the T&amp;D Closet signage.</p>
+<div class="visit-cta">
+<a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&query=Horizon+Plaza+Bungoma+Kenya" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#i-pin"/></svg> Open in Maps</a>
+<a class="btn btn-outline" href="tel:+254740552916"><svg width="18" height="18"><use href="#i-phone"/></svg> Call</a>
+<a class="btn btn-outline" href="https://wa.me/254740552916" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#i-wa"/></svg> WhatsApp</a>
+</div>
+</div>
+<div class="visit-map">
+<div class="map-placeholder">
+<svg width="46" height="46"><use href="#i-pin"/></svg>
+<p>Horizon Plaza, Bungoma</p>
+<a href="https://www.google.com/maps/search/?api=1&query=Horizon+Plaza+Bungoma+Kenya" target="_blank" rel="noopener">Open in Google Maps</a>
+</div>
+</div>
+</div>
+</section>
 
-                        <div class="form-group">
-                            <label>Attach Photo (Max 1)</label>
-                            <input type="file" id="prodImage" accept="image/*" class="form-input" onchange="previewImage(event)">
-                            <img id="imagePreview" src="#" alt="Preview" style="display:none; width: 100%; max-height: 150px; object-fit: cover; border-radius: 10px; margin-top: 10px;">
-                        </div>
-                        <button onclick="saveProduct()" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Save Product</button>
-                        <button onclick="clearForm()" class="btn btn-outline" style="width: 100%; margin-top: 5px; border-color: #ccc; color: #666;">Cancel / Clear</button>
-                    </div>
-                    <div class="manager-list">
-                        <h3>Current Products</h3>
-                        <div id="dashboardProductList"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- SOCIAL -->
+<section id="social" class="section social">
+<div class="container">
+<div class="section-head">
+<span class="kicker">Follow the drops</span>
+<h2 class="section-title">On social</h2>
+</div>
+<div class="social-grid">
+<a class="social-card" href="https://www.tiktok.com/@daktaripdf" target="_blank" rel="noopener">
+<svg width="32" height="32"><use href="#i-tiktok"/></svg>
+<div><strong>@daktaripdf</strong><span>Watch new drops</span></div>
+<svg width="20" height="20" class="arrow"><use href="#i-arrow"/></svg>
+</a>
+<a class="social-card" href="https://www.instagram.com/ddocgram" target="_blank" rel="noopener">
+<svg width="32" height="32"><use href="#i-ig"/></svg>
+<div><strong>@ddocgram</strong><span>See the latest fits</span></div>
+<svg width="20" height="20" class="arrow"><use href="#i-arrow"/></svg>
+</a>
+</div>
+</div>
+</section>
 
-    <!-- ORDER MODAL -->
-    <div id="orderModal" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeOrderModal()">&times;</span>
-            <h2 style="color: var(--deep-pink); margin-bottom: 5px;">Complete Your Order</h2>
-            <p style="color: #666; margin-bottom: 20px; font-size: 0.9rem;">Fill in the details to generate your receipt.</p>
-            <div class="form-group"><label>Product:</label><input type="text" id="modalProductName" class="form-input" readonly></div>
+</main>
 
-            <div class="form-group" id="flavorGroup" style="display: none;">
-                <label>🍬 Choose Your Flavor:</label>
-                <div id="flavorOptions" class="flavor-options"></div>
-            </div>
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container footer-grid">
+<div>
+<span class="brand-text brand-footer">T<span class="amp">&amp;</span>D Closet</span>
+<p>Premium thrifted fits from Bungoma. Hand-picked, quality-checked, delivered countrywide.</p>
+<p class="footer-legal-line" id="footerLegalLine" hidden></p>
+</div>
+<div>
+<h4>Shop</h4>
+<ul><li><a href="#shop">Collection</a></li><li><a href="#" id="footerTrackLink">Track Order</a></li><li><a href="#delivery">Delivery</a></li><li><a href="#payment">Payment</a></li></ul>
+</div>
+<div>
+<h4>Legal</h4>
+<ul>
+<li><a href="#terms" data-policy="terms">Terms of Sale</a></li>
+<li><a href="#privacy" data-policy="privacy">Privacy Policy</a></li>
+<li><a href="#returns" data-policy="returns">Returns and Exchange</a></li>
+<li><a href="#delivery-policy" data-policy="delivery">Delivery Policy</a></li>
+</ul>
+</div>
+<div>
+<h4>Contact</h4>
+<ul>
+<li><a href="tel:+254740552916">0740 552 916</a></li>
+<li><a href="https://wa.me/254740552916" target="_blank" rel="noopener">WhatsApp us</a></li>
+<li class="social-icons">
+<a href="https://www.tiktok.com/@daktaripdf" target="_blank" rel="noopener" aria-label="TikTok"><svg width="20" height="20"><use href="#i-tiktok"/></svg></a>
+<a href="https://www.instagram.com/ddocgram" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20"><use href="#i-ig"/></svg></a>
+</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom container">
+<p>&copy; <span id="year">2026</span> T&amp;D Closet. All rights reserved.</p>
+<p class="footer-payments">Payments processed securely by IntaSend and M-Pesa (Safaricom)</p>
+<p>Website by <strong>JENGA WEB</strong></p>
+<button id="ownerLoginLink" class="owner-link">Owner Login</button>
+</div>
+</footer>
 
-            <div class="form-group">
-                <label>Quantity:</label>
-                <div class="qty-control"><button onclick="changeQty(-1)">-</button><input type="number" id="modalQuantity" value="1" min="1" readonly><button onclick="changeQty(1)">+</button></div>
-            </div>
-            <div class="form-group"><label>Your Phone Number:</label><input type="tel" id="modalPhone" placeholder="e.g., 0712 345 678" class="form-input" required></div>
-            <div class="form-group">
-                <label>Order Type:</label>
-                <div class="radio-group">
-                    <label class="radio-label"><input type="radio" name="orderType" value="Pickup" checked onchange="toggleDestination()"> Pickup</label>
-                    <label class="radio-label"><input type="radio" name="orderType" value="Delivery" onchange="toggleDestination()"> Delivery</label>
-                </div>
-            </div>
-            <div class="form-group" id="destinationGroup" style="display: none;"><label>Delivery Destination:</label><input type="text" id="modalDestination" placeholder="e.g., Bungoma Town..." class="form-input"></div>
-            <div class="total-box"><span>Total:</span><span id="modalTotalPrice">KSh 0</span></div>
-            <button onclick="submitOrder()" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Place My Order 🍭</button>
-        </div>
-    </div>
+<!-- FLOATING HELPERS -->
+<a id="floatWa" class="float-wa" href="https://wa.me/254740552916?text=Hi%20T%26D%20Closet%2C%20I%20want%20to%20place%20an%20order" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg width="26" height="26"><use href="#i-wa"/></svg></a>
+<button id="backToTop" class="back-top" aria-label="Back to top" hidden><svg width="20" height="20"><use href="#i-arrow"/></svg></button>
 
-    <!-- THANK YOU MODAL -->
-    <div id="thankYouModal" class="modal-overlay">
-        <div class="thank-you-card">
-            <div class="candy-rain" id="candyRain"></div>
-            <div class="thank-you-icon">🎉</div>
-            <h2 class="thank-you-title">Thank You!</h2>
-            <p class="thank-you-msg">Your order has been <strong>received</strong> 💕</p>
-            <p class="thank-you-sub">Please wait for feedback from the owner.<br>They will confirm your order shortly!</p>
-            <div class="thank-you-summary" id="thankYouSummary"></div>
-            <button onclick="sendWhatsAppFromThankYou()" class="btn btn-whatsapp" style="width: 100%; margin-top: 20px;">🟢 Send Order to WhatsApp</button>
-            <button onclick="closeThankYou()" class="btn btn-outline" style="width: 100%; margin-top: 10px; border-color: #ddd; color: #888;">Close</button>
-        </div>
-    </div>
+<div id="mobileBottomBar" class="mobile-bottom-bar" hidden>
+<a href="#shop" class="mb-btn"><svg width="20" height="20"><use href="#i-bag"/></svg> Shop</a>
+<a href="https://wa.me/254740552916?text=Hi%20T%26D%20Closet" target="_blank" rel="noopener" class="mb-btn mb-btn-dark"><svg width="20" height="20"><use href="#i-wa"/></svg> WhatsApp</a>
+</div>
 
-    <!-- PAYMENT CELEBRATION OVERLAY -->
-    <div id="paymentCelebration" class="payment-celebration">
-        <div class="confetti-container" id="confettiContainer"></div>
-        <div class="celebration-center">
-            <div class="celebration-ring"></div>
-            <div class="celebration-check">✓</div>
-            <h2 class="celebration-title">Order Sent!</h2>
-            <p class="celebration-subtitle">Your sweet treat is on its way 🍭</p>
-            <div class="celebration-progress"><div class="celebration-progress-fill"></div></div>
-            <p class="celebration-note">Opening WhatsApp...</p>
-        </div>
-    </div>
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
 
-    <div id="bulkPanel" class="bulk-panel" style="display:none;">
-        <div class="bulk-panel-header"><h3>📤 Sending Messages</h3><span class="close-btn" onclick="closeBulkPanel()">&times;</span></div>
-        <div class="bulk-panel-body">
-            <div class="progress-track"><div id="bulkProgressBar" class="progress-fill"></div></div>
-            <p id="bulkProgressText" class="bulk-progress-text">Ready</p>
-            <div id="bulkCurrentOrder" class="bulk-current-order"></div>
-            <button id="bulkNextBtn" onclick="sendNextInQueue()" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Send to First Customer →</button>
-            <button onclick="closeBulkPanel()" class="btn btn-outline" style="width: 100%; margin-top: 10px; border-color: #ddd; color: #888;">Cancel</button>
-        </div>
-    </div>
+<!-- MY ORDERS DRAWER -->
+<div id="myOrdersOverlay" class="overlay" hidden></div>
+<aside id="myOrdersDrawer" class="drawer" aria-hidden="true">
+<div class="drawer-head"><h3>My orders on this device</h3><button id="myOrdersClose" class="icon-btn" aria-label="Close"><svg width="20" height="20"><use href="#i-x"/></svg></button></div>
+<div id="myOrdersList" class="drawer-list"></div>
+</aside>
 
-    <script src="script.js"></script>
+<!-- CHECKOUT MODAL -->
+<div id="orderModal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="omTitle">
+<div class="modal-overlay" data-close></div>
+<div class="modal-panel modal-panel-lg">
+<button class="modal-close icon-btn" data-close aria-label="Close"><svg width="22" height="22"><use href="#i-x"/></svg></button>
+<div class="modal-body">
+<div class="om-gallery">
+<div class="om-main-img" id="omMainImg"></div>
+<div class="om-thumbs" id="omThumbs"></div>
+<div class="om-status-badge" id="omStatusBadge" hidden></div>
+</div>
+<div class="om-info">
+<span class="om-cat" id="omCat">Category</span>
+<h2 class="om-title" id="omTitle">Product</h2>
+<div class="om-price-row"><span class="om-price" id="omPrice">KSh 0</span><span class="om-old" id="omOldPrice" hidden></span></div>
+<p class="om-desc" id="omDesc"></p>
+<div class="om-meta" id="omMeta"></div>
+
+<div class="om-field"><label>Size <span class="req">*</span></label><div class="size-chips" id="omSizeChips"></div><p class="field-error" id="omSizeError" hidden>Please pick a size.</p></div>
+
+<div class="om-field"><label for="omName">Your name <span class="req">*</span></label><input id="omName" type="text" autocomplete="name" placeholder="e.g. Brian"><p class="field-error" id="omNameError" hidden>Please enter your name.</p></div>
+
+<div class="om-field"><label for="omPhone">Phone number <span class="req">*</span></label><input id="omPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="07XX XXX XXX"><p class="field-error" id="omPhoneError" hidden>Enter a valid Kenyan number (07, 01 or +254).</p></div>
+
+<div class="om-field"><label for="omEmail">Email (optional, for your receipt)</label><input id="omEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+
+<div class="om-field"><label>Fulfilment</label>
+<div class="segmented" id="omFulfilment"><button type="button" class="seg active" data-fulfilment="pickup">Pickup</button><button type="button" class="seg" data-fulfilment="delivery">Delivery</button></div>
+</div>
+
+<div class="om-field" id="omDeliveryGroup" hidden>
+<label for="omZone">Delivery zone <span class="req">*</span></label>
+<select id="omZone" class="select select-block"></select>
+<label for="omAddress" style="margin-top:12px">Town / delivery address <span class="req">*</span></label>
+<input id="omAddress" type="text" placeholder="e.g. Kakamega Town, near the market">
+<p class="field-error" id="omAddressError" hidden>Please enter your delivery destination.</p>
+</div>
+
+<div class="om-field">
+<label>How would you like to pay?</label>
+<div class="pay-options" id="omPayOptions">
+<label class="pay-option" data-option="paynow">
+<input type="radio" name="payopt" value="paynow">
+<div class="pay-option-body"><strong>Pay now with M-Pesa</strong><span id="omPayNowDesc">Instant M-Pesa prompt. Fastest way to secure this piece.</span></div>
+</label>
+<label class="pay-option" data-option="booking">
+<input type="radio" name="payopt" value="booking">
+<div class="pay-option-body"><strong>Book / hold this item</strong><span id="omBookingDesc">We keep this piece for you for 24 hours.</span></div>
+</label>
+<label class="pay-option" data-option="pickup" hidden id="omPickupOption">
+<input type="radio" name="payopt" value="pickup">
+<div class="pay-option-body"><strong>Pay on pickup</strong><span>Reserve and pay when you collect in store.</span></div>
+</label>
+<label class="pay-option" data-option="manual">
+<input type="radio" name="payopt" value="manual">
+<div class="pay-option-body"><strong>Pay manually (M-Pesa Till)</strong><span>Send to our Till and enter your M-Pesa code.</span></div>
+</label>
+</div>
+<div class="manual-pay-block" id="omManualBlock" hidden>
+<div class="pay-line"><span class="pay-label">Till number</span><span class="pay-value" id="omTill">[ADD TILL NUMBER]</span><button type="button" class="copy-btn" data-copy-target="omTill" aria-label="Copy till"><svg width="16" height="16"><use href="#i-copy"/></svg></button></div>
+<div class="pay-line"><span class="pay-label">Paybill</span><span class="pay-value" id="omPaybill">[ADD PAYBILL]</span><button type="button" class="copy-btn" data-copy-target="omPaybill" aria-label="Copy paybill"><svg width="16" height="16"><use href="#i-copy"/></svg></button></div>
+<label for="omMpesaCode" style="margin-top:12px">M-Pesa confirmation code</label>
+<input id="omMpesaCode" type="text" inputmode="text" autocapitalize="characters" maxlength="10" placeholder="e.g. QJ12ABC3DE">
+<p class="field-error" id="omMpesaCodeError" hidden>Enter the 10-character code from your M-Pesa SMS.</p>
+</div>
+</div>
+
+<label class="checkbox consent-line">
+<input type="checkbox" id="omConsent">
+<span>I agree to the <a href="#terms" data-policy="terms">Terms of Sale</a>, <a href="#privacy" data-policy="privacy">Privacy Policy</a> and <a href="#returns" data-policy="returns">Returns Policy</a>.</span>
+</label>
+<p class="field-error" id="omConsentError" hidden>Please accept the terms to continue.</p>
+
+</div>
+</div>
+<div class="modal-footer">
+<div class="om-summary">
+<div class="om-summary-row"><span>Item</span><strong id="omSummaryItem">KSh 0</strong></div>
+<div class="om-summary-row" id="omSummaryDeliveryRow" hidden><span>Delivery</span><strong id="omSummaryDelivery">KSh 0</strong></div>
+<div class="om-summary-row om-summary-total"><span>Total</span><strong id="omTotal">KSh 0</strong></div>
+<div class="om-summary-row om-summary-due"><span>Due now</span><strong id="omDueNow">KSh 0</strong></div>
+</div>
+<button id="omSubmit" class="btn btn-dark btn-block"><svg width="18" height="18"><use href="#i-shield"/></svg> <span id="omSubmitLabel">Pay now</span></button>
+</div>
+</div>
+</div>
+
+<!-- SUCCESS SCREEN -->
+<div id="successModal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="smTitle">
+<div class="modal-overlay"></div>
+<div class="modal-panel modal-panel-sm">
+<div class="success-body">
+<div class="success-mark"><svg viewBox="0 0 100 100" class="check-svg"><circle class="check-circle" cx="50" cy="50" r="44"/><path class="check-mark" d="M28 52 L44 68 L72 34"/></svg></div>
+<h2 id="smTitle" class="success-title">Payment received</h2>
+<p id="smSub" class="success-sub">Your order is being confirmed.</p>
+<div class="success-order">
+<div class="success-order-row"><span>Order number</span><strong id="smOrderId">TD-XXXXX-XXXXX</strong></div>
+<div class="success-order-row"><span>Item</span><strong id="smItem"></strong></div>
+<div class="success-order-row"><span>Total</span><strong id="smTotal"></strong></div>
+<div class="success-order-row"><span>Status</span><strong id="smStatus"></strong></div>
+</div>
+<div class="success-note">
+<svg width="16" height="16"><use href="#i-info"/></svg>
+<span>Save your order number. You can use it to track the order any time.</span>
+<button id="smCopyBtn" class="copy-btn copy-btn-inline" aria-label="Copy order number"><svg width="16" height="16"><use href="#i-copy"/></svg></button>
+</div>
+<div class="success-actions">
+<button id="smReceiptBtn" class="btn btn-outline"><svg width="16" height="16"><use href="#i-download"/></svg> Download receipt</button>
+<button id="smTrackBtn" class="btn btn-outline"><svg width="16" height="16"><use href="#i-search"/></svg> Track order</button>
+<a id="smWaBtn" class="btn btn-dark" href="#" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#i-wa"/></svg> Open WhatsApp</a>
+</div>
+<button id="smContinueBtn" class="link-btn">Continue shopping</button>
+</div>
+</div>
+</div>
+
+<!-- TRACK ORDER MODAL -->
+<div id="trackModal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="tmTitle">
+<div class="modal-overlay" data-track-close></div>
+<div class="modal-panel modal-panel-sm">
+<button class="modal-close icon-btn" data-track-close aria-label="Close"><svg width="22" height="22"><use href="#i-x"/></svg></button>
+<div class="track-body">
+<h2 id="tmTitle" class="section-title">Track your order</h2>
+<p class="section-sub">Enter the order number we sent you (starts with TD-).</p>
+<div class="track-search">
+<input id="trackInput" type="text" placeholder="TD-XXXXX-XXXXX" autocapitalize="characters" autocomplete="off">
+<button id="trackSearchBtn" class="btn btn-dark">Track</button>
+</div>
+<p class="field-error" id="trackError" hidden>Order not found. Check the number and try again.</p>
+<div id="trackResult" hidden>
+<div class="track-head">
+<div><span class="om-cat">Order</span><h3 id="trackOrderId" class="track-order-id">TD-XXXXX-XXXXX</h3></div>
+<span id="trackStatusPill" class="status-pill">Pending</span>
+</div>
+<div id="trackTimeline" class="track-timeline"></div>
+<div class="track-details">
+<div class="track-detail"><span>Item</span><strong id="trackItem"></strong></div>
+<div class="track-detail"><span>Total</span><strong id="trackTotal"></strong></div>
+<div class="track-detail"><span>Payment</span><strong id="trackPayment"></strong></div>
+<div class="track-detail"><span>Fulfilment</span><strong id="trackFulfilment"></strong></div>
+<div class="track-detail" id="trackHoldRow" hidden><span>Hold expires</span><strong id="trackHold"></strong></div>
+</div>
+<div class="success-actions">
+<button id="trackReceiptBtn" class="btn btn-outline"><svg width="16" height="16"><use href="#i-download"/></svg> Download receipt</button>
+<a id="trackWaBtn" class="btn btn-dark" href="#" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#i-wa"/></svg> Message us</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- POLICY MODAL (reusable) -->
+<div id="policyModal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+<div class="modal-overlay" data-policy-close></div>
+<div class="modal-panel modal-panel-md">
+<button class="modal-close icon-btn" data-policy-close aria-label="Close"><svg width="22" height="22"><use href="#i-x"/></svg></button>
+<div class="policy-body">
+<h2 id="pmTitle" class="section-title">Terms of Sale</h2>
+<div id="pmContent" class="policy-content"></div>
+</div>
+</div>
+</div>
+
+<!-- CELEBRATION -->
+<div id="celebration" class="celebration" hidden>
+<div class="confetti" id="confetti"></div>
+<div class="celebration-inner">
+<svg class="check-svg" viewBox="0 0 100 100" aria-hidden="true">
+<circle class="check-circle" cx="50" cy="50" r="44" />
+<path class="check-mark" d="M28 52 L44 68 L72 34" />
+</svg>
+<h2 class="celebration-title" id="celebrationTitle">Order reserved</h2>
+<p class="celebration-sub" id="celebrationSub">Opening WhatsApp to confirm...</p>
+<div class="progress"><div class="progress-bar"></div></div>
+<a id="celebrationWa" class="btn btn-dark" href="#" target="_blank" rel="noopener" style="margin-top:18px">Open WhatsApp</a>
+</div>
+</div>
+
+<!-- CONFIRM DIALOG -->
+<div id="confirmDialog" class="modal" hidden role="dialog" aria-modal="true">
+<div class="modal-overlay" data-confirm-close></div>
+<div class="modal-panel modal-panel-xs">
+<div class="confirm-body">
+<h3 id="confirmTitle">Are you sure?</h3>
+<p id="confirmText">This cannot be undone.</p>
+<div class="confirm-actions">
+<button class="btn btn-outline" id="confirmCancel">Cancel</button>
+<button class="btn btn-danger" id="confirmOk">Confirm</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- OWNER VIEW (populated by owner.js) -->
+<section id="ownerView" class="owner-view" hidden></section>
+
+<!-- Hidden IntaSend button (bound once) -->
+<button id="intasendBtn" class="intaSendPayButton" hidden aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;padding:0;border:0;overflow:hidden;"></button>
+
+<!-- IntaSend inline SDK.
+     Check developers.intasend.com/online-payments for the current script URL/version and pin it. -->
+<script src="https://unpkg.com/intasend-inlinejs-sdk/build/intasend-inline.js" defer></script>
+
+<script type="module" src="script.js"></script>
 </body>
 </html>

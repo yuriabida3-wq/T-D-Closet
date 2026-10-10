@@ -1,0 +1,84 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isOwner() {
+      return request.auth != null && request.auth.uid == '2I88k5kjGIgrkW5kqRFB6Hsslpx1';
+    }
+
+    // ---------- SETTINGS ----------
+    match /settings/public {
+      allow read: if true;
+      allow write: if isOwner();
+    }
+    match /settings/private {
+      allow read, write: if isOwner();
+    }
+
+    // ---------- PRODUCTS ----------
+    // Visitors may only place or extend a temporary hold on an item.
+    function productHoldOk() {
+      let nw = request.resource.data;
+      let old = resource.data;
+      return request.resource.data.diff(resource.data).affectedKeys()
+               .hasOnly(['status', 'holdUntil', 'holdOrderId', 'updatedAt'])
+        && nw.status == 'held'
+        && nw.holdUntil is timestamp
+        && nw.holdUntil > request.time
+        && nw.holdUntil < request.time + duration.value(49, 'h')
+        && nw.updatedAt == request.time
+        && (
+             old.status == 'available'
+          || (old.status == 'held' && old.holdUntil < request.time)
+          || (old.status == 'held' && old.holdOrderId == nw.holdOrderId)
+        );
+    }
+    match /products/{productId} {
+      allow read: if true;
+      allow create, delete: if isOwner();
+      allow update: if isOwner() || productHoldOk();
+    }
+
+    // ---------- ORDERS ----------
+    function validNewOrder(orderId) {
+      let d = request.resource.data;
+      let p = get(/databases/$(database)/documents/products/$(d.productId)).data;
+      return d.keys().hasAll(['orderId','kind','status','paymentStatus','productId','qty',
+                              'unitPrice','deliveryFee','total','amountDue','customerName',
+                              'phone','consent','createdAt'])
+        && d.keys().hasOnly(['orderId','kind','status','paymentStatus','paymentMethod','paymentRef',
+                             'productId','productName','productImage','size','qty','unitPrice',
+                             'deliveryFee','total','amountDue','customerName','phone','email',
+                             'fulfilment','deliveryZone','address','consent','holdUntil',
+                             'createdAt','conflict'])
+        && d.orderId == orderId
+        && d.kind in ['purchase', 'booking']
+        && d.status in ['awaiting_payment', 'booked', 'pay_on_pickup']
+        && d.paymentStatus == 'unpaid'
+        && d.qty is int && d.qty >= 1 && d.qty <= 5
+        && d.unitPrice == p.price
+        && d.deliveryFee is number && d.deliveryFee >= 0 && d.deliveryFee <= 3000
+        && d.total == d.unitPrice * d.qty + d.deliveryFee
+        && d.amountDue is number && d.amountDue >= 0 && d.amountDue <= d.total
+        && d.customerName is string && d.customerName.size() >= 2 && d.customerName.size() <= 80
+        && d.phone is string && d.phone.size() >= 10 && d.phone.size() <= 13
+        && d.consent == true
+        && d.createdAt == request.time
+        && (p.stock > 1 || (p.status == 'held' && p.holdOrderId == orderId));
+    }
+    // Visitors may only record a payment CLAIM; only the owner can mark VERIFIED.
+    function validPaymentUpdate() {
+      let changed = request.resource.data.diff(resource.data).affectedKeys();
+      return changed.hasOnly(['paymentStatus','paymentRef','paymentMethod','paidClaimedAt','conflict'])
+        && request.resource.data.paymentStatus in ['claimed', 'failed']
+        && resource.data.paymentStatus in ['unpaid', 'failed', 'claimed'];
+    }
+    match /orders/{orderId} {
+      allow get: if true;               // order number is an unguessable capability
+      allow list: if isOwner();         // nobody else can list customers
+      allow create: if validNewOrder(orderId);
+      allow update: if isOwner() || validPaymentUpdate();
+      allow delete: if isOwner();
+    }
+  }
+}
