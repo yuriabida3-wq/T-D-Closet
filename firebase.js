@@ -66,15 +66,15 @@ export const DEFAULT_SETTINGS = {
   phone: "0700 000 000", whatsapp: "254700000000", email: "",
   address: "Nairobi, Kenya (Nationwide Delivery)",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Horizon+Plaza+Bungoma+Kenya",
-  hoursText: "Mon - Sat, 8:00 AM - 8:00 PM. Sunday: closed.",
+  hoursText: "We reply to WhatsApp requests Mon - Sat, 9:00 AM - 6:00 PM.",
   tillNumber: "", paybill: "", accountName: "",
   intasendPublicKey: DEFAULT_INTASEND_PUBLIC_KEY, intasendLive: false,
   enableOnlinePayment: true, enableManualMpesa: true,
   enablePayOnPickup: true, enableBooking: true,
-  bookingHoldHours: 24, bookingDepositPercent: 0, payNowHoldMinutes: 15,
+  bookingHoldHours: 24, bookingDepositPercent: 50, payNowHoldMinutes: 15,
   deliveryZones: [
-    { name: "Bungoma Town", fee: 150, eta: "Same day" },
-    { name: "Nationwide (courier)", fee: 350, eta: "1 - 3 days" }
+    { name: "Nairobi Pickup", fee: 0, eta: "When goods arrive" },
+    { name: "Countrywide Courier", fee: 350, eta: "1-2 days after arrival" }
   ],
   announcement: "Nationwide delivery  |  Pickup at Horizon Plaza, Bungoma  |  Pay with M-Pesa",
   returnsText: "", termsText: "", privacyText: "", deliveryText: ""

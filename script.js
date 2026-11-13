@@ -953,7 +953,7 @@ function updateSubmitLabel(){
   const due = computeDueNow();
   if (state.cartPayOption === 'paynow') label.textContent = due > 0 ? 'Pay ' + formatKSh(due) + ' now' : 'Pay now';
   else if (state.cartPayOption === 'booking') label.textContent = due > 0 ? 'Book and pay ' + formatKSh(due) + ' deposit' : 'Book now (free hold)';
-  else if (state.cartPayOption === 'pickup') label.textContent = 'Reserve for pickup';
+  else if (state.cartPayOption === 'pickup') label.textContent = 'Pre-order for pickup';
   else if (state.cartPayOption === 'manual') label.textContent = 'Submit M-Pesa code';
   else label.textContent = 'Place order';
 }
