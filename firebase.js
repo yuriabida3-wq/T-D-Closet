@@ -11,7 +11,7 @@ export const FIREBASE_CONFIG = {
 };
 
 export const SITE_URL = "https://YOUR-SITE.onrender.com";
-export const OWNER_WHATSAPP = "254740552916";
+export const OWNER_WHATSAPP = "254700000000";
 export const DEFAULT_INTASEND_PUBLIC_KEY = "";
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -62,9 +62,9 @@ export const authFns = {
 };
 
 export const DEFAULT_SETTINGS = {
-  businessName: "T&D Closet", legalName: "", registrationNo: "", kraPin: "",
-  phone: "0740 552 916", whatsapp: OWNER_WHATSAPP, email: "",
-  address: "Horizon Plaza, 4th Floor, Shop 1011 (opposite the bus station), Bungoma, Kenya",
+  businessName: "Triza Wanjiru", legalName: "", registrationNo: "", kraPin: "",
+  phone: "0700 000 000", whatsapp: "254700000000", email: "",
+  address: "Nairobi, Kenya (Nationwide Delivery)",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Horizon+Plaza+Bungoma+Kenya",
   hoursText: "Mon - Sat, 8:00 AM - 8:00 PM. Sunday: closed.",
   tillNumber: "", paybill: "", accountName: "",

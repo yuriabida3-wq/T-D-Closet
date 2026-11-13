@@ -1,7 +1,7 @@
 'use strict';
 
 /* ============================================================
-   script.js — T&D Closet customer side
+   script.js — Triza Wanjiru customer side
    ============================================================
    Sections in this file:
      1. Imports and constants
@@ -38,7 +38,7 @@ const {
 /* ============================================================
    1. CONSTANTS
    ============================================================ */
-const CATEGORIES = ['Jeans','Polos','Shirts','Sweatpants','Jackets'];
+const CATEGORIES = ['Hair','Bags','Clothes','Accessories','Shoes'];
 const PAGE_SIZE = 12;
 const PRODUCTS_CACHE_KEY = 'td_products_cache';
 const MY_ORDERS_KEY = 'td_my_orders';
@@ -182,7 +182,7 @@ function showSetupNotice(){
   document.body.innerHTML =
     '<div style="min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:24px;font-family:Inter,sans-serif;background:#F6F5F2;color:#0E0E0E;text-align:center">' +
     '<div style="max-width:420px">' +
-    '<div style="font-family:\'Bebas Neue\',Impact,sans-serif;font-size:44px;letter-spacing:1px;color:#C9962B">T&D Closet</div>' +
+    '<div style="font-family:\'Bebas Neue\',Impact,sans-serif;font-size:44px;letter-spacing:1px;color:#C9962B">Triza Wanjiru</div>' +
     '<h1 style="font-size:20px;margin:16px 0 8px">Shop is being set up</h1>' +
     '<p style="color:#6B6B6B;font-size:14px;line-height:1.6">Firebase is not configured yet. Open <code>firebase.js</code> and paste your Firebase web config. See SETUP.md for the exact steps.</p>' +
     '</div></div>';
@@ -500,7 +500,7 @@ function bindProductGrid(){
   });
 }
 function notifyMe(p){
-  const msg = 'Hi T&D Closet, please tell me if "' + p.name + '" becomes available again.';
+  const msg = 'Hi Triza Wanjiru, please tell me if "' + p.name + '" becomes available again.';
   window.open(waLink(OWNER_WHATSAPP, msg), '_blank');
 }
 
@@ -546,7 +546,7 @@ function policyContentHTML(key){
       '<p>' + escapeHTML(par).replace(/\n/g, '<br>') + '</p>'
     ).join('');
   }
-  const biz = escapeHTML(s.businessName || 'T&D Closet');
+  const biz = escapeHTML(s.businessName || 'Triza Wanjiru');
   const addr = escapeHTML(s.address || '');
   const phone = escapeHTML(s.phone || '');
   if (key === 'terms'){
@@ -1322,7 +1322,7 @@ async function runIntaSendPayment(order){
   btn.setAttribute('data-first_name', first);
   btn.setAttribute('data-last_name', last);
   btn.setAttribute('data-country', 'KE');
-  btn.setAttribute('data-narrative', 'T&D Closet order ' + order.orderId);
+  btn.setAttribute('data-narrative', 'Triza Wanjiru order ' + order.orderId);
   btn.click();
 }
 async function onPaymentComplete(ref){
@@ -1452,7 +1452,7 @@ async function downloadReceipt(order){
     let y = 14;
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(16);
-    doc.text((s.businessName || 'T&D Closet').toUpperCase(), 10, y); y += 6;
+    doc.text((s.businessName || 'Triza Wanjiru').toUpperCase(), 10, y); y += 6;
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8);
     doc.text(title, 10, y); y += 4;
@@ -1491,7 +1491,7 @@ async function downloadReceipt(order){
     if (order.holdUntil) row('Hold until', formatDate(order.holdUntil));
 
     doc.setFontSize(7.5);
-    doc.text('Thank you for shopping at ' + (s.businessName || 'T&D Closet') + '. Returns per our Returns Policy.', 10, 195);
+    doc.text('Thank you for shopping at ' + (s.businessName || 'Triza Wanjiru') + '. Returns per our Returns Policy.', 10, 195);
     doc.text('This receipt was generated electronically.', 10, 198);
     doc.save('TD-Closet-Receipt-' + order.orderId + '.pdf');
     toast('Receipt downloaded.', 'success');
@@ -1504,7 +1504,7 @@ function openPrintReceipt(order){
   const s = state.settings;
   const html =
     '<div id="printReceipt">' +
-      '<h1>' + escapeHTML(s.businessName || 'T&D Closet') + '</h1>' +
+      '<h1>' + escapeHTML(s.businessName || 'Triza Wanjiru') + '</h1>' +
       '<div>' + escapeHTML(s.address || '') + '</div>' +
       '<div>' + escapeHTML(s.phone || '') + '</div>' +
       '<h2>' + escapeHTML(receiptTitle(order)) + '</h2>' +
@@ -1518,7 +1518,7 @@ function openPrintReceipt(order){
       '<div class="print-row"><span>Delivery</span><strong>' + escapeHTML(formatKSh(order.deliveryFee)) + '</strong></div>' +
       '<div class="print-total"><span>Total</span><span>' + escapeHTML(formatKSh(order.total)) + '</span></div>' +
       '<div class="print-row"><span>Payment</span><strong>' + escapeHTML(order.paymentMethod || '-') + ' ' + escapeHTML(order.paymentRef || '') + '</strong></div>' +
-      '<div class="print-footer">Thank you for shopping at ' + escapeHTML(s.businessName || 'T&D Closet') + '. Returns per our Returns Policy. This receipt was generated electronically.</div>' +
+      '<div class="print-footer">Thank you for shopping at ' + escapeHTML(s.businessName || 'Triza Wanjiru') + '. Returns per our Returns Policy. This receipt was generated electronically.</div>' +
     '</div>';
   const w = window.open('', '_blank');
   if (!w){ toast('Allow popups to print the receipt.', 'error'); return; }
@@ -1546,7 +1546,7 @@ function buildCustomerMessage(orderId){
     ? 'Booking - held for ' + (state.settings.bookingHoldHours || 24) + 'h'
     : 'Pay on pickup';
   return [
-    '*T&D CLOSET - ORDER ' + orderId + '*',
+    '*TRIZA WANJIRU - ORDER ' + orderId + '*',
     kindText() + ' | ' + formatDate(new Date()),
     '--------------------------',
     'Customer: ' + ($('#omName') ? $('#omName').value.trim() : ''),

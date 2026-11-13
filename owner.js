@@ -1,7 +1,7 @@
 'use strict';
 
 /* ============================================================
-   owner.js — T&D Closet Owner Dashboard (lazy-loaded)
+   owner.js — Triza Wanjiru Owner Dashboard (lazy-loaded)
    Exports initOwner(context). The context provides:
    state, db, fs, auth, authFns, SITE_URL, OWNER_WHATSAPP,
    DEFAULT_SETTINGS, onClose, and helper formatters.
@@ -567,14 +567,14 @@ function orderTemplates(o){
   const name = (o.customerName || '').split(' ')[0];
   const link = ctx.SITE_URL + '/?order=' + o.orderId;
   return {
-    payment_received: 'Hello ' + name + ', we have received your payment for order ' + o.orderId + ' (' + o.productName + '). We are confirming it now.\n' + link + '\n- ' + 'T&D Closet',
-    confirmed: 'Hello ' + name + ', your order ' + o.orderId + ' is confirmed. We are preparing it now.\n' + link + '\n- T&D Closet',
-    ready: 'Hello ' + name + ', your order ' + o.orderId + ' is ready. ' + (o.fulfilment === 'delivery' ? 'It will be dispatched shortly.' : 'Please come pick it up at Horizon Plaza, 4th Floor, Shop 1011.') + '\n' + link + '\n- T&D Closet',
-    out: 'Hello ' + name + ', your order ' + o.orderId + ' is out for delivery. Please be reachable.\n' + link + '\n- T&D Closet',
-    completed: 'Hello ' + name + ', your order ' + o.orderId + ' is complete. Thank you for shopping with T&D Closet.\n' + link + '\n- T&D Closet',
-    booking_reminder: 'Hello ' + name + ', your booking for ' + o.productName + ' (order ' + o.orderId + ') is still held. Please confirm payment or pick it up in time.\n' + link + '\n- T&D Closet',
-    reminder: 'Hello ' + name + ', a reminder about your order ' + o.orderId + ' for ' + o.productName + '. Total ' + ctx.formatKSh(o.total) + '. Reply if you need help.\n' + link + '\n- T&D Closet',
-    refund: 'Hello ' + name + ', your refund for order ' + o.orderId + ' has been processed to your M-Pesa. Thank you for your patience.\n- T&D Closet'
+    payment_received: 'Hello ' + name + ', we have received your payment for order ' + o.orderId + ' (' + o.productName + '). We are confirming it now.\n' + link + '\n- ' + 'Triza Wanjiru',
+    confirmed: 'Hello ' + name + ', your order ' + o.orderId + ' is confirmed. We are preparing it now.\n' + link + '\n- Triza Wanjiru',
+    ready: 'Hello ' + name + ', your order ' + o.orderId + ' is ready. ' + (o.fulfilment === 'delivery' ? 'It will be dispatched shortly.' : 'Please come pick it up at Horizon Plaza, 4th Floor, Shop 1011.') + '\n' + link + '\n- Triza Wanjiru',
+    out: 'Hello ' + name + ', your order ' + o.orderId + ' is out for delivery. Please be reachable.\n' + link + '\n- Triza Wanjiru',
+    completed: 'Hello ' + name + ', your order ' + o.orderId + ' is complete. Thank you for shopping with Triza Wanjiru.\n' + link + '\n- Triza Wanjiru',
+    booking_reminder: 'Hello ' + name + ', your booking for ' + o.productName + ' (order ' + o.orderId + ') is still held. Please confirm payment or pick it up in time.\n' + link + '\n- Triza Wanjiru',
+    reminder: 'Hello ' + name + ', a reminder about your order ' + o.orderId + ' for ' + o.productName + '. Total ' + ctx.formatKSh(o.total) + '. Reply if you need help.\n' + link + '\n- Triza Wanjiru',
+    refund: 'Hello ' + name + ', your refund for order ' + o.orderId + ' has been processed to your M-Pesa. Thank you for your patience.\n- Triza Wanjiru'
   };
 }
 function whatsappOrder(id){
@@ -598,7 +598,7 @@ async function downloadOrderReceiptFromOwner(o){
     const doc = new jsPDF({ unit: 'mm', format: 'a5' });
     let y = 14;
     doc.setFont('helvetica', 'bold'); doc.setFontSize(16);
-    doc.text((s.businessName || 'T&D Closet').toUpperCase(), 10, y); y += 6;
+    doc.text((s.businessName || 'Triza Wanjiru').toUpperCase(), 10, y); y += 6;
     doc.setFont('helvetica', 'normal'); doc.setFontSize(8);
     const title = o.paymentStatus === 'verified' ? 'PAYMENT RECEIPT' : (o.paymentStatus === 'claimed' ? 'PROVISIONAL RECEIPT' : 'ORDER CONFIRMATION');
     doc.text(title, 10, y); y += 6;
@@ -616,7 +616,7 @@ async function downloadOrderReceiptFromOwner(o){
     row('Payment', (o.paymentMethod || '') + ' ' + (o.paymentRef || ''));
     row('Fulfilment', o.fulfilment === 'delivery' ? 'Delivery - ' + (o.address || '') : 'Pickup');
     doc.setFontSize(7.5);
-    doc.text('Generated electronically by T&D Closet.', 10, 195);
+    doc.text('Generated electronically by Triza Wanjiru.', 10, 195);
     doc.save('TD-Closet-Receipt-' + o.orderId + '.pdf');
   } catch(e){
     ctx.toast('Could not generate PDF.', 'error');
@@ -699,7 +699,7 @@ function exportOrdersCSV(){
   const total = verified.reduce((s,o) => s + Number(o.total||0), 0);
   const claimedTotal = claimed.reduce((s,o) => s + Number(o.total||0), 0);
   const lines = [];
-  lines.push(csvCell('T&D Closet - Orders report'));
+  lines.push(csvCell('Triza Wanjiru - Orders report'));
   lines.push(csvCell('Generated: ' + ctx.formatDate(new Date())));
   lines.push('');
   lines.push(csvCell('SUMMARY'));
@@ -824,7 +824,7 @@ function renderProductsHTML(){
           '<input type="hidden" id="prodEditId">' +
           '<label>Item name <span class="req">*</span><input id="prodName" type="text" required></label>' +
           '<div class="row-2">' +
-            '<label>Category<select id="prodCategory">' + ['Jeans','Polos','Shirts','Sweatpants','Jackets'].map(c => '<option>' + c + '</option>').join('') + '</select></label>' +
+            '<label>Category<select id="prodCategory">' + ['Hair','Bags','Clothes','Accessories','Shoes'].map(c => '<option>' + c + '</option>').join('') + '</select></label>' +
             '<label>Condition<select id="prodCondition"><option>Excellent</option><option>Very good</option><option>Good</option></select></label>' +
           '</div>' +
           '<div class="row-2">' +
@@ -900,7 +900,7 @@ function bindProductsTab(){
       if (!p) return;
       document.getElementById('prodEditId').value = p.id;
       document.getElementById('prodName').value = p.name || '';
-      document.getElementById('prodCategory').value = p.category || 'Jeans';
+      document.getElementById('prodCategory').value = p.category || 'Hair';
       document.getElementById('prodCondition').value = p.condition || 'Excellent';
       document.getElementById('prodPrice').value = p.price || '';
       document.getElementById('prodOldPrice').value = p.oldPrice || '';
@@ -946,7 +946,7 @@ function bindProductsTab(){
 function resetProdForm(){
   document.getElementById('prodEditId').value = '';
   document.getElementById('prodName').value = '';
-  document.getElementById('prodCategory').value = 'Jeans';
+  document.getElementById('prodCategory').value = 'Hair';
   document.getElementById('prodCondition').value = 'Excellent';
   document.getElementById('prodPrice').value = '';
   document.getElementById('prodOldPrice').value = '';
@@ -1131,7 +1131,7 @@ function bindCustomersTab(){
   const c = document.getElementById('ownerContent');
   c.addEventListener('click', e => {
     const b = e.target.closest('[data-wa-phone]');
-    if (b) window.open(ctx.waLink(b.getAttribute('data-wa-phone'), 'Hi from T&D Closet.'), '_blank');
+    if (b) window.open(ctx.waLink(b.getAttribute('data-wa-phone'), 'Hi from Triza Wanjiru.'), '_blank');
   });
   const ex = document.getElementById('exportCustomersBtn');
   if (ex) ex.addEventListener('click', () => {
@@ -1454,7 +1454,7 @@ async function confirmImport(){
         const id = 'p_' + Date.now() + '_' + Math.floor(Math.random()*100000);
         batch.set(doc(ctx.db, 'products', id), {
           name: p.name || 'Item',
-          category: p.category || p.desc || 'Jeans',
+          category: p.category || p.desc || 'Hair',
           condition: 'Very good',
           price: Number(p.price) || 0,
           oldPrice: Number(p.oldPrice) || 0,
