@@ -45,7 +45,7 @@ if (isConfigReady()) {
     }
     auth = getAuth(app);
   } catch (e) {
-    console.error('[T&D] Firebase init failed:', e);
+    console.error('[Triza Wanjiru] Firebase init failed:', e);
     app = db = auth = null;
   }
 }
@@ -65,7 +65,7 @@ export const DEFAULT_SETTINGS = {
   businessName: "Triza Wanjiru", legalName: "", registrationNo: "", kraPin: "",
   phone: "0700 000 000", whatsapp: "254700000000", email: "",
   address: "Nairobi, Kenya (Nationwide Delivery)",
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Horizon+Plaza+Bungoma+Kenya",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Horizon+Plaza+Kenya+Kenya",
   hoursText: "We reply to WhatsApp requests Mon - Sat, 9:00 AM - 6:00 PM.",
   tillNumber: "", paybill: "", accountName: "",
   intasendPublicKey: DEFAULT_INTASEND_PUBLIC_KEY, intasendLive: false,
@@ -76,6 +76,6 @@ export const DEFAULT_SETTINGS = {
     { name: "Nairobi Pickup", fee: 0, eta: "When goods arrive" },
     { name: "Countrywide Courier", fee: 350, eta: "1-2 days after arrival" }
   ],
-  announcement: "Nationwide delivery  |  Pickup at Horizon Plaza, Bungoma  |  Pay with M-Pesa",
+  announcement: "China to Kenya  |  Pickup at Nairobi CBD, Kenya  |  Pay with M-Pesa",
   returnsText: "", termsText: "", privacyText: "", deliveryText: ""
 };

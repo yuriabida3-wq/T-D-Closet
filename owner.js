@@ -95,7 +95,7 @@ async function handleLoginSubmit(e){
   try{
     await ctx.authFns.signInWithEmailAndPassword(ctx.auth, email, pw);
   } catch(ex){
-    console.warn('[T&D] login error:', ex);
+    console.warn('[Triza Wanjiru] login error:', ex);
     let msg = 'Could not sign in. Check your details and try again.';
     if (ex && ex.code){
       if (ex.code === 'auth/wrong-password' || ex.code === 'auth/invalid-credential') msg = 'Wrong email or password.';
@@ -224,7 +224,7 @@ function subscribeOrders(){
     orderList = snap.docs.map(d => Object.assign({ id: d.id }, d.data()));
     renderCurrentTab();
   }, err => {
-    console.warn('[T&D] orders listener failed:', err);
+    console.warn('[Triza Wanjiru] orders listener failed:', err);
     ctx.toast('Could not read orders. Check your permissions.', 'error');
   });
 }
@@ -555,7 +555,7 @@ async function orderAction(action, id){
       return;
     }
   } catch(e){
-    console.error('[T&D] orderAction failed:', e);
+    console.error('[Triza Wanjiru] orderAction failed:', e);
     ctx.toast('Action failed. Check your permissions.', 'error');
   }
 }
@@ -569,7 +569,7 @@ function orderTemplates(o){
   return {
     payment_received: 'Hello ' + name + ', we have received your payment for order ' + o.orderId + ' (' + o.productName + '). We are confirming it now.\n' + link + '\n- ' + 'Triza Wanjiru',
     confirmed: 'Hello ' + name + ', your order ' + o.orderId + ' is confirmed. We are preparing it now.\n' + link + '\n- Triza Wanjiru',
-    ready: 'Hello ' + name + ', your order ' + o.orderId + ' is ready. ' + (o.fulfilment === 'delivery' ? 'It will be dispatched shortly.' : 'Please come pick it up at Horizon Plaza, 4th Floor, Shop 1011.') + '\n' + link + '\n- Triza Wanjiru',
+    ready: 'Hello ' + name + ', your order ' + o.orderId + ' is ready. ' + (o.fulfilment === 'delivery' ? 'It will be dispatched shortly.' : 'Please come pick it up at Nairobi CBD.') + '\n' + link + '\n- Triza Wanjiru',
     out: 'Hello ' + name + ', your order ' + o.orderId + ' is out for delivery. Please be reachable.\n' + link + '\n- Triza Wanjiru',
     completed: 'Hello ' + name + ', your order ' + o.orderId + ' is complete. Thank you for shopping with Triza Wanjiru.\n' + link + '\n- Triza Wanjiru',
     booking_reminder: 'Hello ' + name + ', your booking for ' + o.productName + ' (order ' + o.orderId + ') is still held. Please confirm payment or pick it up in time.\n' + link + '\n- Triza Wanjiru',
@@ -745,7 +745,7 @@ function exportOrdersCSV(){
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'T&D-Closet-Report-' + new Date().toISOString().slice(0,10) + '.csv';
+  a.download = 'Triza Wanjiru-Closet-Report-' + new Date().toISOString().slice(0,10) + '.csv';
   document.body.appendChild(a);
   a.click();
   a.remove();
@@ -824,7 +824,7 @@ function renderProductsHTML(){
           '<input type="hidden" id="prodEditId">' +
           '<label>Item name <span class="req">*</span><input id="prodName" type="text" required></label>' +
           '<div class="row-2">' +
-            '<label>Category<select id="prodCategory">' + ['Hair','Bags','Clothes','Accessories','Shoes'].map(c => '<option>' + c + '</option>').join('') + '</select></label>' +
+            '<label>Category<select id="prodCategory">' + ['Wigs & Hair','Bags','Fashion','Bags','Sneakers'].map(c => '<option>' + c + '</option>').join('') + '</select></label>' +
             '<label>Condition<select id="prodCondition"><option>Excellent</option><option>Very good</option><option>Good</option></select></label>' +
           '</div>' +
           '<div class="row-2">' +
@@ -900,7 +900,7 @@ function bindProductsTab(){
       if (!p) return;
       document.getElementById('prodEditId').value = p.id;
       document.getElementById('prodName').value = p.name || '';
-      document.getElementById('prodCategory').value = p.category || 'Hair';
+      document.getElementById('prodCategory').value = p.category || 'Wigs & Hair';
       document.getElementById('prodCondition').value = p.condition || 'Excellent';
       document.getElementById('prodPrice').value = p.price || '';
       document.getElementById('prodOldPrice').value = p.oldPrice || '';
@@ -946,7 +946,7 @@ function bindProductsTab(){
 function resetProdForm(){
   document.getElementById('prodEditId').value = '';
   document.getElementById('prodName').value = '';
-  document.getElementById('prodCategory').value = 'Hair';
+  document.getElementById('prodCategory').value = 'Wigs & Hair';
   document.getElementById('prodCondition').value = 'Excellent';
   document.getElementById('prodPrice').value = '';
   document.getElementById('prodOldPrice').value = '';
@@ -1143,7 +1143,7 @@ function bindCustomersTab(){
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'T&D-Closet-Customers-' + new Date().toISOString().slice(0,10) + '.csv';
+    a.download = 'Triza Wanjiru-Closet-Customers-' + new Date().toISOString().slice(0,10) + '.csv';
     document.body.appendChild(a); a.click(); a.remove();
     ctx.toast('Customer list exported.', 'success');
   });
@@ -1202,7 +1202,7 @@ function downloadBackup(){
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'T&D-Closet-Backup-' + new Date().toISOString().slice(0,10) + '.json';
+  a.download = 'Triza Wanjiru-Closet-Backup-' + new Date().toISOString().slice(0,10) + '.json';
   document.body.appendChild(a); a.click(); a.remove();
   ctx.toast('Backup downloaded.', 'success');
 }
@@ -1454,7 +1454,7 @@ async function confirmImport(){
         const id = 'p_' + Date.now() + '_' + Math.floor(Math.random()*100000);
         batch.set(doc(ctx.db, 'products', id), {
           name: p.name || 'Item',
-          category: p.category || p.desc || 'Hair',
+          category: p.category || p.desc || 'Wigs & Hair',
           condition: 'Very good',
           price: Number(p.price) || 0,
           oldPrice: Number(p.oldPrice) || 0,

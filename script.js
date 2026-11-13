@@ -38,7 +38,7 @@ const {
 /* ============================================================
    1. CONSTANTS
    ============================================================ */
-const CATEGORIES = ['Hair','Bags','Clothes','Accessories','Shoes'];
+const CATEGORIES = ['Wigs & Hair','Bags','Fashion','Bags','Sneakers'];
 const PAGE_SIZE = 12;
 const PRODUCTS_CACHE_KEY = 'td_products_cache';
 const MY_ORDERS_KEY = 'td_my_orders';
@@ -200,7 +200,7 @@ async function loadSettings(){
       state.settings = Object.assign({}, DEFAULT_SETTINGS);
     }
   } catch(e){
-    console.warn('[T&D] settings load failed, using defaults:', e);
+    console.warn('[Triza Wanjiru] settings load failed, using defaults:', e);
     state.settings = Object.assign({}, DEFAULT_SETTINGS);
   }
   applySettingsToUI();
@@ -216,7 +216,7 @@ function applySettingsToUI(){
   }
   const till = s.tillNumber || '[ADD TILL NUMBER]';
   const paybill = s.paybill || '[ADD PAYBILL]';
-  const send = s.phone || '0740 552 916';
+  const send = s.phone || '0700 000 000';
   [['payTill', till],['omTill', till],['payPaybill', paybill],['omPaybill', paybill],['paySend', send]].forEach(pair => {
     const el = document.getElementById(pair[0]);
     if (el) el.textContent = pair[1];
@@ -297,7 +297,7 @@ async function syncProducts(){
     saveProductsToCache();
     return true;
   } catch(e){
-    console.warn('[T&D] product sync failed:', e);
+    console.warn('[Triza Wanjiru] product sync failed:', e);
     return false;
   }
 }
@@ -572,7 +572,7 @@ function policyContentHTML(key){
   }
   if (key === 'returns'){
     return [
-      '<p>Thrifted items are pre-owned. Condition is graded and shown on every listing.</p>',
+      '<p>Verified Suppliers items are pre-owned. Condition is graded and shown on every listing.</p>',
       '<h3>When we accept returns</h3><p>Within 48 hours of receiving your item, if it is materially not as described or you were sent the wrong item. The item must be unaltered, unworn outside fitting, and in the same condition you received it.</p>',
       '<h3>How to start a return</h3><p>WhatsApp ' + phone + ' with your order number and photos of the issue. We will arrange a return or exchange.</p>',
       '<h3>Refunds</h3><p>Approved refunds are sent back to your M-Pesa number within 3 working days.</p>',
@@ -1179,7 +1179,7 @@ async function submitOrder(){
       showSuccess(orderId, title, sub);
     }
   } catch(e){
-    console.error('[T&D] submit error:', e);
+    console.error('[Triza Wanjiru] submit error:', e);
     toast('Something went wrong. Please try again.', 'error');
     state.isSubmitting = false;
     btn.disabled = false;
@@ -1218,7 +1218,7 @@ async function claimItem(product, orderId){
     });
     return ok;
   } catch(e){
-    console.warn('[T&D] claim failed:', e);
+    console.warn('[Triza Wanjiru] claim failed:', e);
     return false;
   }
 }
@@ -1251,7 +1251,7 @@ async function recordPaymentClaim(orderId, method, ref, conflict){
       }
     }
   } catch(e){
-    console.warn('[T&D] claim write failed, queuing:', e);
+    console.warn('[Triza Wanjiru] claim write failed, queuing:', e);
     try{
       const q = JSON.parse(localStorage.getItem(PENDING_CLAIMS_KEY) || '[]');
       q.push({ orderId, method, ref, ts: Date.now() });
@@ -1300,7 +1300,7 @@ async function initIntaSend(){
     .on('IN-PROGRESS', () => { /* ignore */ });
     state.intasendReady = true;
   } catch(e){
-    console.warn('[T&D] IntaSend init failed:', e);
+    console.warn('[Triza Wanjiru] IntaSend init failed:', e);
   }
 }
 async function runIntaSendPayment(order){
@@ -1487,7 +1487,7 @@ async function downloadReceipt(order){
     doc.setFont('helvetica', 'normal');
     row('Payment method', order.paymentMethod || '-');
     row('Payment reference', order.paymentRef || '-');
-    row('Fulfilment', order.fulfilment === 'delivery' ? 'Delivery - ' + (order.address || '') : 'Pickup - Horizon Plaza, 4th Floor, Shop 1011');
+    row('Fulfilment', order.fulfilment === 'delivery' ? 'Delivery - ' + (order.address || '') : 'Pickup - Nairobi CBD');
     if (order.holdUntil) row('Hold until', formatDate(order.holdUntil));
 
     doc.setFontSize(7.5);
@@ -1496,7 +1496,7 @@ async function downloadReceipt(order){
     doc.save('TD-Closet-Receipt-' + order.orderId + '.pdf');
     toast('Receipt downloaded.', 'success');
   } catch(e){
-    console.warn('[T&D] jsPDF failed, using print view:', e);
+    console.warn('[Triza Wanjiru] jsPDF failed, using print view:', e);
     openPrintReceipt(order);
   }
 }
@@ -1558,7 +1558,7 @@ function buildCustomerMessage(orderId){
     'TOTAL: ' + formatKSh(total),
     '--------------------------',
     'Payment: ' + methodText,
-    'Method: ' + (state.cartFulfilment === 'delivery' ? 'Delivery - ' + ($('#omAddress') ? $('#omAddress').value.trim() : '') : 'Pickup at Horizon Plaza'),
+    'Method: ' + (state.cartFulfilment === 'delivery' ? 'Delivery - ' + ($('#omAddress') ? $('#omAddress').value.trim() : '') : 'Pickup at Nairobi CBD'),
     'Track / receipt: ' + SITE_URL + '/?order=' + orderId
   ].join('\n');
 }
@@ -1787,7 +1787,7 @@ async function openOwner(){
       toast, formatKSh, formatDate, escapeHTML, waLink, normalizePhone
     });
   } catch(e){
-    console.error('[T&D] owner module failed:', e);
+    console.error('[Triza Wanjiru] owner module failed:', e);
     toast('Could not load the owner dashboard.', 'error');
     view.hidden = true;
     document.body.style.overflow = '';
@@ -1896,9 +1896,9 @@ async function init(){
 }
 
 document.addEventListener('DOMContentLoaded', init);
-window.addEventListener('error', e => { console.error('[T&D] runtime error:', e.message); });
+window.addEventListener('error', e => { console.error('[Triza Wanjiru] runtime error:', e.message); });
 window.addEventListener('unhandledrejection', e => {
-  console.error('[T&D] unhandled promise:', e.reason);
+  console.error('[Triza Wanjiru] unhandled promise:', e.reason);
   try { toast('Something went wrong. Please try again.', 'error'); } catch(_){}
 });
 
